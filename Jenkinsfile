@@ -1,4 +1,5 @@
-node('master') {
+pipeline {
+  agent any
   stage('checkout') {
     # Necessary to have already configured the credentials in Jenkins
     git branch: 'master', url: 'https://github.com/maderomemo/spring-boot-jenkings-integration'
