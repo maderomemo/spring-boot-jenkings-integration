@@ -2,6 +2,25 @@
 version: '3.3'
 
 services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/test?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNMAE: root
+      SPRING_DATASOURCE_PASSWORD: madero123
+    volumes:
+      - ./todo/src:/build/src
+    networks:
+      - backend
+      
   db:
     image: mysql:5.7
     environment:
