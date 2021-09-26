@@ -4,7 +4,6 @@ pipeline {
         stage('clone') {
             steps {
                 git 'https://github.com/maderomemo/spring-boot-jenkings-integration.git'
-
             }
         }
         stage('compile and test') {
