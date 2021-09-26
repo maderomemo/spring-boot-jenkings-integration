@@ -8,14 +8,14 @@ pipeline {
         }
         stage('compile') {
             steps {
-                sh 'docker run -i --rm --name todo-api-compile -v "$(pwd)":/usr/src/app -w /usr/src/app maven:3.5.2-jdk-8-alpine mvn clean package -DskipTests -e -B'
+                sh 'docker run -i --rm --name todo-api-compile -v "$(pwd)":/usr/src/app -w /usr/src/app maven:3.5.2-jdk-8-alpine mvn clean package -DskipTests -q'
             }
         }
-        /*stage('unit tests') {
+        stage('unit tests') {
             steps {
-                sh 'docker run -i --rm --name todo-api-test -v "$(pwd)":/usr/src/app -w /usr/src/app maven:3.5.2-jdk-8-alpine mvn test -P test'
+                sh 'docker run -i --rm --name todo-api-test -v "$(pwd)":/usr/src/app -w /usr/src/app maven:3.5.2-jdk-8-alpine mvn test -P test -q'
             }
-        }*/
+        }
         stage('build image') {
             steps {
                 sh 'docker build -t todo-api .'
