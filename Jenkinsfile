@@ -19,7 +19,7 @@ pipeline {
         }
         stage('compile') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean package -P test -q'
             }
         }
         /*stage('unit tests') {
