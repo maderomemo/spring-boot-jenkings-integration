@@ -21,7 +21,7 @@ pipeline {
         }*/
         stage('build image') {
             steps {
-                sh 'docker build -t todo-api .'
+                sh 'sudo docker build -t todo-api .'
             }
         }
     }
